@@ -26,7 +26,33 @@
 					<p:commandButton value="Visualizar"
 						update="@form :formTabelaImportarPessoa"
 						actionListener="#{pessoaMB.prepararImportar()}" />
+						<h:outputText value="" />
+					<p:commandButton value="Importar CSV"
+						update="@form :formTabelaImportarPessoa"
+						actionListener="#{pessoaMB.prepararImportar()}" />
+						
+					</h:panelGrid>
+				<h:panelGrid columns="2">
+					<h:outputText value="Nome *" />
+					<p:inputText value="#{pessoaMB.pessoasImportar}"  />
 
+					<h:outputText value="CPF *" />
+					<p:inputText value="#{pessoaMB.pessoasImportar}" />
+
+					<h:outputText value="Email" />
+					<p:inputText value="#{pessoaMB.pessoasImportar}" />
+
+					<h:outputText value="Matrícula (RA/SIAPE)" />
+					<p:inputText value="#{pessoaMB.pessoasImportar}" />
+					
+					<h:outputText value="" />
+					<p:commandButton value="Importar Pessoa"
+						update="@form :formTabelaImportarPessoa"
+						actionListener="#{pessoaMB.prepararImportar()}" />
+					
+						
+						
+					
 				</h:panelGrid>
 				<br />
 			</h:form>
