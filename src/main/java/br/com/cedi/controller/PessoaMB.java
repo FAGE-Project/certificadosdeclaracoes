@@ -47,6 +47,19 @@ public class PessoaMB implements Serializable {
 		this.pessoa = p;
 	}
 	
+	public Pessoa popularPessoa(String[] atributos) {
+		Pessoa pes = new Pessoa();
+		pes.setNome(atributos[0].toUpperCase());
+		pes.setCpf(atributos[1].replace(".", "").replace("-", ""));
+		pes.setEmail(atributos[2].toLowerCase());
+		pes.setMatricula(atributos[3].toUpperCase());
+		return pes;
+	}
+	
+	public String formatarCpfComPonto(Pessoa pes) {
+		return pes.getCpf().trim().substring(0, 3)+"."+pes.getCpf().trim().substring(3, 6)+"."+pes.getCpf().trim().substring(6, 9)+"-"+pes.getCpf().trim().substring(9, 11);
+	}
+	
 	public void prepararImportar(){
 		//nome,cpf,email,ra/siape;
 		this.listaPessoasImportar = new ArrayList<>();
@@ -55,16 +68,11 @@ public class PessoaMB implements Serializable {
 		String pessoasCadastradas="";
 		for(String p:pessoas){
 			String[] atributos = p.split(",");
-			Pessoa pes = new Pessoa();
-			pes.setNome(atributos[0].toUpperCase());
-			pes.setCpf(atributos[1].replace(".", "").replace("-", ""));
-			pes.setEmail(atributos[2].toLowerCase());
-			pes.setMatricula(atributos[3].toUpperCase());
-			
+			Pessoa pes = popularPessoa(atributos);
 			if(!ValidaCPF.isCPF(pes.getCpf())){
 				cpfsInvalidos+= pes.getCpf()+"; ";
 			}else{
-				String cpfComPonto = pes.getCpf().trim().substring(0, 3)+"."+pes.getCpf().trim().substring(3, 6)+"."+pes.getCpf().trim().substring(6, 9)+"-"+pes.getCpf().trim().substring(9, 11);
+				String cpfComPonto = formatarCpfComPonto(pes);
 				List<Pessoa> lp = pessoaDAO.listarCondicao("cpf='" + pes.getCpf().trim() + "' or cpf='"+pessoa.getCpf().replace(".", "").replace("-", "").trim()+"' or cpf='"+cpfComPonto+"'");
 				if(lp.size()>0){
 					pessoasCadastradas+=lp.get(0).getNome()+"-"+lp.get(0).getCpf()+"; ";
