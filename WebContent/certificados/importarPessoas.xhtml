@@ -1,3 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
 <ui:composition template="../resources/template/template-administrador.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -8,26 +16,43 @@
 		<f:viewAction action="#{pessoaMB.inicializar()}" />
 	</f:metadata>
 	<ui:define name="conteudo">
+<link rel="stylesheet" type="text/css" href="style.css" />
 		<p:panel header="Importar Pessoas">
-			<h:form id="formFormularioImportarPessoa">
-				<p:messages />
-				<h3>Para importar os dados, insira no campo abaixo a lista de
-					pessoas no seguinte formato:
-					nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;</h3>
-				<h3>Caso a pessoa não tenha o email ou ra/sipe, deixar em
-					branco: nome,cpf,,;nome,cpf,email,;nome,cpf,,ra/siape;"</h3>
-
+			<h:form id="formFormularioImportarPessoa" class="import-form">
+			<div class="left-panel">
 				<h:panelGrid columns="2">
-					<h:outputText value="Pessoas *" />
+					<h:outputText value="Nome *" styleClass="form-label"/>
+					<p:inputText value="#{pessoaMB.pessoasImportar}" required="true" requiredMessage="Informar o Nome!!" styleClass="form-input"/>
+					
+					<h:outputText value="CPF *" styleClass="form-label"/>
+					<p:inputText value="#{pessoaMB.pessoasImportar}" required="true" requiredMessage="Informar o CPF!!" styleClass="form-input"/>
+					
+					<h:outputText value="Email" styleClass="form-label"/>
+					<p:inputText value="#{pessoaMB.pessoasImportar}" styleClass="form-input"/>
+					
+					<h:outputText value="Matrícula (RA/SIAPE)" styleClass="form-label"/>
+					<p:inputText value="#{pessoaMB.pessoasImportar}" styleClass="form-input"/>
+				</h:panelGrid>
+			</div>
+				<br></br>
+			<div class="right-panel">
+				<p:messages />
+					<h4 >Para importar os dados, insira no campo abaixo a lista de pessoas no seguinte formato:</h4>
+					<p><small>nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;</small></p>
+					<h4>Caso a pessoa não tenha o email ou ra/sipe, deixar em branco:</h4>
+					<p><small>nome,cpf,,;nome,cpf,email,;nome,cpf,,ra/siape;</small></p>
+				<h:panelGrid columns="2">
+					<h:outputText value="Pessoas *" styleClass="form-label"/>
 					<p:inputTextarea value="#{pessoaMB.pessoasImportar}" cols="120"
-						rows="20" required="true" requiredMessage="Informar as Pessoas!!" />
+						rows="20" required="true" requiredMessage="Informar as Pessoas!!" styleClass="input-texto"/>
 
 					<h:outputText value="" />
 					<p:commandButton value="Visualizar"
 						update="@form :formTabelaImportarPessoa"
 						actionListener="#{pessoaMB.prepararImportar()}" />
-
 				</h:panelGrid>
+			</div>
+				
 				<br />
 			</h:form>
 
@@ -94,3 +119,5 @@
 	</ui:define>
 
 </ui:composition>
+</h:body>
+</html>
