@@ -34,6 +34,45 @@ public class PessoaMB implements Serializable {
 	
 	
 	private String pessoasImportar;
+	
+	private String nome;
+	private String cpf;
+	private String email;
+	private String ra;
+
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getRa() {
+		return ra;
+	}
+
+	public void setRa(String ra) {
+		this.ra = ra;
+	}
+	
 
 	public void inicializar() {
 		this.pessoa = new Pessoa();
@@ -46,6 +85,23 @@ public class PessoaMB implements Serializable {
 		System.out.println("Pessoa: " + p.getNome());
 		this.pessoa = p;
 	}
+	
+	
+	public void concatenarPessoas(String nome, String cpf, String email, String ra) {
+	    String pessoaStr = nome + "," + cpf + ",";
+	    if (email != null && !email.isEmpty()) {
+	        pessoaStr += email;
+	    }
+	    pessoaStr += ",";
+	    if (ra != null && !ra.isEmpty()) {
+	        pessoaStr += ra;
+	    }
+	    pessoaStr += ";";
+	    pessoasImportar += pessoaStr;
+	}
+
+
+	
 	
 	public void prepararImportar(){
 		//nome,cpf,email,ra/siape;

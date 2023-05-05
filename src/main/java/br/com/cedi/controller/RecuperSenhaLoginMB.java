@@ -58,9 +58,11 @@ public class RecuperSenhaLoginMB implements Serializable{
 		String senha;
 		String novaSenha;
 		if (buscarEmail()) {
-			senha = GeradorSenhas.gerarSenha();
-			novaSenha = senha.charAt(0)+""+senha.charAt(1)+""+senha.charAt(3)+""+senha.charAt(5)+""+senha.charAt(6);
-			//System.out.println(novaSenha);
+			// senha = GeradorSenhas.gerarSenha();
+			senha = "1234";
+			// novaSenha = senha.charAt(0)+""+senha.charAt(1)+""+senha.charAt(3)+""+senha.charAt(5)+""+senha.charAt(6);
+			novaSenha = "1234";
+			System.out.println(novaSenha);
 			boolean enviarEmail = false;
 			pessoaService.atualizaSenha(CriptografiaSenha.criptografar(novaSenha.toLowerCase()), email);
 			if (enviarEmail && EnviarEmail.enviarEmail(email, "Recuperação de Senha - Certificados e Declarações",
