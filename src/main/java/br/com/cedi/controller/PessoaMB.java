@@ -86,6 +86,15 @@ public class PessoaMB implements Serializable {
 		this.pessoa = p;
 	}
 	
+	public void prepararImportarSimples(){
+		System.out.println("Entrou simples");
+		nome = this.getNome();
+		cpf = this.getCpf();
+		email = this.getEmail();
+		ra = this.getRa();
+		concatenarPessoas(nome, cpf, email, ra);
+	}
+	
 	
 	public void concatenarPessoas(String nome, String cpf, String email, String ra) {
 	    String pessoaStr = nome + "," + cpf + ",";
@@ -98,10 +107,16 @@ public class PessoaMB implements Serializable {
 	    }
 	    pessoaStr += ";";
 	    pessoasImportar += pessoaStr;
+	    prepararImportar();
 	}
 
 
-	
+	public void limparCampos() {
+		this.nome = "";
+		this.cpf = "";
+		this.email = "";
+		this.ra = "";
+	}
 	
 	public void prepararImportar(){
 		//nome,cpf,email,ra/siape;
@@ -139,6 +154,7 @@ public class PessoaMB implements Serializable {
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage("Algumas pessoas que estão na listas já estão cadastradas e não serão importadas: "+pessoasCadastradas));
 		}
+	    limparCampos();
 	}
 	
 	public void finalizarImportacao(){

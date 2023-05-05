@@ -30,11 +30,15 @@
 					<h:outputText value="CPF *" styleClass="form-label"/>
 					<p:inputText value="#{pessoaMB.cpf}" required="true" requiredMessage="Informar o CPF!!" styleClass="form-input"/>
 					
-					<h:outputText value="Email" styleClass="form-label"/>
-					<p:inputText value="#{pessoaMB.email}" styleClass="form-input"/>
+					<h:outputText value="Email *" styleClass="form-label"/>
+					<p:inputText value="#{pessoaMB.email}" required="true" requiredMessage="Informar o Email!!" styleClass="form-input"/>
 					
-					<h:outputText value="Matrícula (RA/SIAPE)" styleClass="form-label"/>
-					<p:inputText value="#{pessoaMB.ra}" styleClass="form-input"/>
+					<h:outputText value="Matrícula (RA/SIAPE) *" styleClass="form-label"/>
+					<p:inputText value="#{pessoaMB.ra}" required="true" requiredMessage="Informar RA ou SIAPE!!" styleClass="form-input"/>
+					
+					<p:commandButton value="Visualizar Simples"
+					        update="@form :formFormularioImportarPessoa"
+					        actionListener="#{pessoaMB.prepararImportarSimples()}" styleClass="botao"/>
 
 				</h:panelGrid>
 			</div>
@@ -48,7 +52,7 @@
 				<h:panelGrid columns="2">
 					<h:outputText value="Pessoas *" styleClass="form-label"/>
 					<p:inputTextarea value="#{pessoaMB.pessoasImportar}" cols="120"
-						rows="20" required="true" requiredMessage="Informar as Pessoas!!" styleClass="input-texto"/>
+						rows="20" styleClass="input-texto"/>
 					<div class="botoes">
 					<h:outputText value="" />
 					    <p:commandButton value="Visualizar"
