@@ -88,10 +88,10 @@ public class PessoaMB implements Serializable {
 	
 	public void prepararImportarSimples(){
 		System.out.println("Entrou simples");
-		nome = this.getNome();
-		cpf = this.getCpf();
-		email = this.getEmail();
-		ra = this.getRa();
+		nome = this.getNome().trim();
+		cpf = this.getCpf().trim();
+		email = this.getEmail().trim();
+		ra = this.getRa().trim();
 		concatenarPessoas(nome, cpf, email, ra);
 	}
 	
@@ -112,10 +112,10 @@ public class PessoaMB implements Serializable {
 
 
 	public void limparCampos() {
-		this.nome = "";
-		this.cpf = "";
-		this.email = "";
-		this.ra = "";
+		this.nome = " ";
+		this.cpf = " ";
+		this.email = " ";
+		this.ra = " ";
 	}
 	
 	public void prepararImportar(){
