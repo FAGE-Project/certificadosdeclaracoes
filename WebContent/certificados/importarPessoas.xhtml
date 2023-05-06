@@ -21,8 +21,8 @@
 		<p:panel header="Importar Pessoas">
 			<h:form id="formFormularioImportarPessoa" class="import-form">
 			<div class="left-panel">
-			<p:messages />
-					<h4 >Importe Simples</h4>
+				<p:messages />
+					<h4 >Use esses campos para adicionar uma pessoa manualmente</h4>
 				<h:panelGrid columns="2">
 					<h:outputText value="Nome *" styleClass="form-label"/>
 					<p:inputText value="#{pessoaMB.nome}" required="true" requiredMessage="Informar o Nome!!" styleClass="form-input"/>
@@ -36,32 +36,33 @@
 					<h:outputText value="Matrícula (RA/SIAPE) *" styleClass="form-label"/>
 					<p:inputText value="#{pessoaMB.ra}" required="true" requiredMessage="Informar RA ou SIAPE!!" styleClass="form-input"/>
 					
-					<p:commandButton value="Visualizar Simples"
+					<p:commandButton value="Adicionar"
 					        update="@form :formFormularioImportarPessoa"
 					        actionListener="#{pessoaMB.prepararImportarSimples()}" styleClass="botao"/>
-
 				</h:panelGrid>
+				<br />
+				<br />
+					<p:messages />
+						<h4 >Importar planilha</h4>
+					        <p:fileUpload class="small-file-upload" value="#{pessoaMB.arquivo}" mode="advanced"
+								fileUploadListener="#{pessoaMB.fileUploadedListener}"></p:fileUpload>
 			</div>
 				<br></br>
 			<div class="right-panel">
 				<p:messages />
 					<h4 >Para importar os dados, insira no campo abaixo a lista de pessoas no seguinte formato:</h4>
-					<p><small>nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;</small></p>
-					<h4>Caso a pessoa não tenha o email ou ra/sipe, deixar em branco:</h4>
-					<p><small>nome,cpf,,;nome,cpf,email,;nome,cpf,,ra/siape;</small></p>
+					<h4>Todos os campos são obrigatorios</h4>
+					<p><small>Exemplo inserindo 3 pessoas: nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;</small></p>
 				<h:panelGrid columns="2">
-					<h:outputText value="Pessoas *" styleClass="form-label"/>
 					<p:inputTextarea value="#{pessoaMB.pessoasImportar}" cols="120"
 						rows="20" styleClass="input-texto"/>
-					<div class="botoes">
+					
+					
 					<h:outputText value="" />
 					    <p:commandButton value="Visualizar"
 					        update="@form :formTabelaImportarPessoa"
 					        actionListener="#{pessoaMB.prepararImportar()}" styleClass="botao"/>
-					    <p:commandButton value="Importar CSV"
-					        update="@form :formTabelaImportarPessoa"
-					        actionListener="#{pessoaMB.prepararImportar()}" styleClass="botao"/>
-					</div>
+					
 
 				</h:panelGrid>
 			</div>
