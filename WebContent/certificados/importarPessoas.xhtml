@@ -20,7 +20,7 @@
 			<h:form id="formFormularioImportarPessoa"  enctype="multipart/form-data">
 				<p:messages />
 				<h3>Para importar os dados, insira no campo abaixo a lista de
-					pessoas no seguinte formato:
+					pessoas no seguintes formato:
 					nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;nome,cpf,email,ra/siape;</h3>
 				<h3>Caso a pessoa não tenha o email ou ra/sipe, deixar em
 					branco: nome,cpf,,;nome,cpf,email,;nome,cpf,,ra/siapeee;"</h3>
@@ -55,30 +55,14 @@ ssssss
 					
 						
 					</h:panelGrid>
-				<h:panelGrid columns="2"> 
+				
 					
-					<h:outputText value="Nome *" />
-					<p:inputText value="#{pessoaMB.pessoasImportar}"  />
-
-					<h:outputText value="CPF *" />
-					<p:inputText value="#{pessoaMB.pessoasImportar}" />
-
-					<h:outputText value="Email" />
-					<p:inputText value="#{pessoaMB.pessoasImportar}" />
-
-					<h:outputText value="Matrícula (RA/SIAPE)" />
-					<p:inputText value="#{pessoaMB.pessoasImportar}" />
 					
-					<h:outputText value="" />
-					<p:commandButton value="Importar Pessoa"
-						update="@form :formTabelaImportarPessoa"
-						actionListener="#{pessoaMB.prepararImportar()}" />
-					
+
 						
 						
 					
-				</h:panelGrid>
-				<br />
+				
 			</h:form>
 			
 			
